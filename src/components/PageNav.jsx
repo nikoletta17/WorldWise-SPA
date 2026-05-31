@@ -24,7 +24,12 @@ function NavItems() {
     <>
       {navLinks.map((link) => (
         <li key={link.path}>
-          <NavLink to={link.path}>{link.label}</NavLink>
+          <NavLink
+            to={link.path}
+            className={link.path === "/login" ? styles.ctaLink : ""}
+          >
+            {link.label}
+          </NavLink>
         </li>
       ))}
     </>

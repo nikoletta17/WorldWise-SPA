@@ -3,7 +3,11 @@ import styles from "./CityList.module.css";
 import Spinner from "./Spinner.jsx";
 import Message from "./Message.jsx";
 
-function CityList({ cities, isLoading }) {
+import { useCities } from "../hooks/useCities.jsx";
+
+
+function CityList() {
+  const { cities, isLoading } = useCities();
   if (isLoading) return <Spinner />;
 
   if (!cities.length)

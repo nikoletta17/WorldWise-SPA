@@ -5,7 +5,6 @@ import Message from "./Message.jsx";
 
 import { useCities } from "../hooks/useCities.jsx";
 
-
 function CityList() {
   const { cities, isLoading } = useCities();
   if (isLoading) return <Spinner />;

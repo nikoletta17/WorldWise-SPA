@@ -1,8 +1,10 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import styles from "./City.module.css";
 import { useEffect } from "react";
 import { useCities } from "../hooks/useCities";
+
+import Button from "./Button";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -14,11 +16,14 @@ const formatDate = (date) =>
 
 function City() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { getCity, currentCity } = useCities();
 
   useEffect(() => {
     getCity(id);
-  }, [id]);
+  }, [id, getCity]);
+
+  if (!currentCity) return null;
 
   /* const [searchParams, setSearchParams] = useSearchParams();
   const lat = searchParams.get("lat");
@@ -58,7 +63,15 @@ function City() {
           Check out {cityName} on Wikipedia &rarr;
         </a>
       </div>
-
+      <Button
+        onClick={(e) => {
+          e.preventDefault();
+          navigate(-1);
+        }}
+        btnType="back"
+      >
+        &larr; Back
+      </Button>
       <div></div>
     </div>
   );

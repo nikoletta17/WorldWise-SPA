@@ -53,12 +53,12 @@ function Form() {
 
       <div className={styles.buttons}>
         <Button btnType="primary">Add</Button>
-        <Button
+        <Button 
           onClick={(e) => {
             e.preventDefault();
             navigate(-1);
           }}
-          btnType="black"
+          btnType="back"
         >
           &larr; Back
         </Button>
